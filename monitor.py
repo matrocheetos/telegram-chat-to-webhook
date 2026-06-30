@@ -1,4 +1,5 @@
 import os
+import time
 import requests
 from telethon import TelegramClient, events
 
@@ -8,6 +9,21 @@ WEBHOOK_URL = os.getenv('WEBHOOK_URL', '')
 
 chats_env = os.getenv('MONITORED_CHATS', '@chat_1, @chat_2')
 MONITORED_CHATS = [chat.strip() for chat in chats_env.split(',') if chat.strip()]
+
+SESSION_FILE = 'session/userbot.session'
+
+if not os.path.exists(SESSION_FILE):
+    print("=========================================================")
+    print("⚠️ AVISO: Nenhuma sessão do Telegram encontrada!")
+    print("Para gerar a sessão, acesse o terminal do container e execute:")
+    print("docker exec -it telegram-monitor python auth.py")
+    print("Após gerar a sessão, este container iniciará o monitoramento automaticamente.")
+    print("=========================================================")
+    # Loop aguardando a criação do arquivo de sessão
+    while not os.path.exists(SESSION_FILE):
+        time.sleep(5)
+    
+    print("✅ Sessão detectada! Inicializando cliente...")
 
 print("Iniciando monitor de promoções do Telegram...")
 client = TelegramClient('session/userbot', API_ID, API_HASH)

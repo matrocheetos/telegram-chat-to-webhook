@@ -56,4 +56,10 @@ services:
             - MONITORED_CHATS=@canal_1, -100987654321
 ```
 
-> **Atenção no Primeiro Uso:** Na primeira vez que o container subir, o Telethon precisará autenticar sua sessão. Você precisará olhar os logs do container (`docker logs -f telegram-monitor`) ou anexar ao terminal interativo (`docker attach telegram-monitor`) para inserir o seu número de telefone e o código recebido por SMS no aplicativo do Telegram. Após isso, um arquivo `.session` será salvo no volume mapeado.
+> **Atenção no Primeiro Uso:** Na primeira vez que o container subir, se não houver um arquivo de sessão, o bot ficará "dormindo" e não vai crashar, mas emitirá um aviso nos logs.
+> 
+> Para gerar a sessão, acesse o terminal do seu servidor onde o Docker está rodando e digite:
+> ```bash
+> docker exec -it telegram-monitor python auth.py
+> ```
+> O script solicitará interativamente seu número de telefone e o código recebido no app do Telegram. Após o sucesso, o script principal detectará a sessão automaticamente e passará a ler as mensagens.
