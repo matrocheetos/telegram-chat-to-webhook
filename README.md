@@ -18,7 +18,13 @@ O comportamento do container é inteiramente controlado por variáveis de ambien
 | `API_ID` | `0` | ID da API do Telegram |
 | `API_HASH` | `(vazio)` | Hash da API do Telegram |
 | `WEBHOOK_URL` | `(vazio)` | A URL completa para onde o JSON da mensagem será enviado via método POST (ex: `http://n8n:5678/webhook/telegram`). |
-| `MONITORED_CHATS` | `@canal_1, @canal_2` | Uma lista separada por vírgula contendo os `@usernames` públicos ou os `IDs` numéricos (ex: `-1001234567`) dos canais/grupos que o bot deve monitorar. |
+| `MONITORED_CHATS` | `@canal_1, @canal_2` | Uma lista separada por vírgula contendo os `@usernames` públicos ou os `IDs` numéricos dos grupos que o bot deve monitorar. |
+| `AUTH_BASIC_USER` | `(vazio)` | **Opcional**. Usuário para HTTP Basic Auth no webhook. (Exige `AUTH_BASIC_PASSWORD`) |
+| `AUTH_BASIC_PASSWORD` | `(vazio)` | **Opcional**. Senha para HTTP Basic Auth no webhook. |
+| `AUTH_HEADER_NAME` | `(vazio)` | **Opcional**. Nome de um Header customizado (ex: `X-Api-Key`). (Exige `AUTH_HEADER_VALUE`) |
+| `AUTH_HEADER_VALUE` | `(vazio)` | **Opcional**. O valor para o Header customizado. |
+| `AUTH_JWT_SECRET` | `(vazio)` | **Opcional**. Se definido, gera um token JWT e envia em `Authorization: Bearer <token>`. |
+| `AUTH_JWT_ALGORITHM` | `HS256` | **Opcional**. Algoritmo para assinatura JWT (ex: `HS256`, `HS512`). |
 
 ## Como obter as Credenciais e IDs
 
