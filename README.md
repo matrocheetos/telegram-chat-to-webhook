@@ -69,3 +69,9 @@ services:
 > docker exec -it telegram-monitor python auth.py
 > ```
 > O script solicitará interativamente seu número de telefone e o código recebido no app do Telegram. Após o sucesso, o script principal detectará a sessão automaticamente e passará a ler as mensagens.
+
+## Testando a Integração
+
+Você pode validar o recebimento de payloads no seu n8n e o funcionamento da autenticação utilizando o script de testes embutido.
+
+Consulte o guia detalhado em [TESTING.md](TESTING.md) para saber como executar os testes de integração.
