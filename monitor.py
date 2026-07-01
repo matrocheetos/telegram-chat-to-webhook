@@ -43,13 +43,12 @@ client = TelegramClient('session/userbot', API_ID, API_HASH)
 @client.on(events.NewMessage(chats=MONITORED_CHATS))
 async def handler(event):
     message_text = event.raw_text
-    message_text_lower = message_text.lower()
     
     if WEBHOOK_URL:
         print(f"Mensagem recebida. Enviando para o webhook...")
         payload = {
-            "text": message_text,
-            "source": "telegram"
+            "text": message_text.lower(),
+            "source": str(event.chat_id)
         }
         try:
             request_kwargs = {
