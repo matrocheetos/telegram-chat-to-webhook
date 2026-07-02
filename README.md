@@ -36,12 +36,13 @@ Para conectar no Telegram com seu próprio usuário, você precisa registrar um 
 4. Copie o **App api_id** e o **App api_hash**.
 
 ### 2. Obtendo o ID numérico ou Username dos Chats
-Se o grupo for privado, ele não possui um `@username`, então você precisa do ID numérico dele. Para facilitar isso, este repositório possui o script auxiliar `get_chats.py`.
+Para facilitar a obtenção dos identificadores dos canais e grupos que você deseja monitorar, utilize o script `get_chats.py`.
 
-Rode o comando abaixo após iniciar o container para listar todos os grupos em que você está e copiar seus respectivos IDs numéricos ou `@usernames`:
+Rode o comando abaixo após iniciar o container para listar todos os seus chats em formato de tabela (exibindo a coluna **ID** com o identificador numérico enviado ao webhook, a coluna **User** com o username e o nome do chat):
 ```bash
 docker exec -it telegram-monitor python get_chats.py
 ```
+Copie os valores correspondentes da coluna **ID** ou **User** e cole na sua variável de ambiente `MONITORED_CHATS`.
 
 ## Docker Compose
 

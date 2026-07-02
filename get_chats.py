@@ -28,23 +28,29 @@ try:
         chats = []
         for dialog in client.iter_dialogs():
             if dialog.is_channel or dialog.is_group:
-                identifier = f"@{dialog.entity.username}" if getattr(dialog.entity, 'username', None) else str(dialog.id)
+                username = f"@{dialog.entity.username}" if getattr(dialog.entity, 'username', None) else "-"
+                numeric_id = str(dialog.id)
                 name = dialog.name or ""
                 if len(name) > 100:
                     name = name[:97] + "..."
-                chats.append((identifier, name))
+                chats.append((numeric_id, username, name))
 
         header_id = "ID"
+        header_user = "User"
         header_name = "Nome"
+
         max_id_len = max((len(c[0]) for c in chats), default=15)
         max_id_len = max(max_id_len, len(header_id))
 
-        print(f"{header_id.ljust(max_id_len)} | {header_name}")
-        print(f"{'-' * max_id_len}-+-{'-' * 40}")
-        for identifier, name in chats:
-            print(f"{identifier.ljust(max_id_len)} | {name}")
-        print(f"{'-' * max_id_len}-+-{'-' * 40}\n")
-        print("Copie os valores da coluna 'ID' e cole na sua variável MONITORED_CHATS.")
+        max_user_len = max((len(c[1]) for c in chats), default=15)
+        max_user_len = max(max_user_len, len(header_user))
+
+        print(f"\n{header_id.ljust(max_id_len)} | {header_user.ljust(max_user_len)} | {header_name}")
+        print(f"{'-' * max_id_len}-+-{'-' * max_user_len}-+-{'-' * 40}")
+        for numeric_id, username, name in chats:
+            print(f"{numeric_id.ljust(max_id_len)} | {username.ljust(max_user_len)} | {name}")
+        print(f"{'-' * max_id_len}-+-{'-' * max_user_len}-+-{'-' * 40}\n")
+        print("Copie os valores da coluna 'ID' ou 'User' e cole na sua variável MONITORED_CHATS.")
 finally:
     for f in glob.glob(f"{TEMP_PREFIX}.session*"):
         try:
