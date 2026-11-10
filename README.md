@@ -40,7 +40,7 @@ Para facilitar a obtenção dos identificadores dos canais e grupos que você de
 
 Rode o comando abaixo após iniciar o container para listar todos os seus chats em formato de tabela (exibindo a coluna **ID** com o identificador numérico enviado ao webhook, a coluna **User** com o username e o nome do chat):
 ```bash
-docker exec -it telegram-monitor python get_chats.py
+docker exec -it telegram-chat-to-webhook python get_chats.py
 ```
 Copie os valores correspondentes da coluna **ID** ou **User** e cole na sua variável de ambiente `MONITORED_CHATS`.
 
@@ -50,9 +50,9 @@ Exemplo de configuração para o `compose.yaml`:
 
 ```yaml
 services:
-    telegram-monitor:
-        image: ghcr.io/matrocheetos/telegram-monitor:latest
-        container_name: telegram-monitor
+    telegram-chat-to-webhook:
+        image: ghcr.io/matrocheetos/telegram-chat-to-webhook:latest
+        container_name: telegram-chat-to-webhook
         restart: unless-stopped
         volumes:
             - ./telegram-session:/app/session
@@ -67,7 +67,7 @@ services:
 > 
 > Para gerar a sessão, acesse o terminal do seu servidor onde o Docker está rodando e digite:
 > ```bash
-> docker exec -it telegram-monitor python auth.py
+> docker exec -it telegram-chat-to-webhook python auth.py
 > ```
 > O script solicitará interativamente seu número de telefone e o código recebido no app do Telegram. Após o sucesso, o script principal detectará a sessão automaticamente e passará a ler as mensagens.
 

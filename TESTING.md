@@ -10,17 +10,17 @@ O script já vem embutido na imagem do container e lê automaticamente as variá
 
 Para enviar uma mensagem de teste padrão ("Esta é uma mensagem de teste do Telegram"):
 ```bash
-docker exec telegram-monitor python send_test.py
+docker exec telegram-chat-to-webhook python send_test.py
 ```
 
 Para enviar uma mensagem de teste com um texto personalizado:
 ```bash
-docker exec telegram-monitor python send_test.py --text "Olá! Esta é uma mensagem personalizada"
+docker exec telegram-chat-to-webhook python send_test.py --text "Olá! Esta é uma mensagem personalizada"
 ```
 
 Para simular o envio a partir de um chat ID específico do Telegram (por padrão envia `123456789`):
 ```bash
-docker exec telegram-monitor python send_test.py --source "-1002479272437"
+docker exec telegram-chat-to-webhook python send_test.py --source "-1002479272437"
 ```
 
 ---

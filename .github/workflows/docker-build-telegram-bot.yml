@@ -12,7 +12,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository_owner }}/telegram-monitor
+  IMAGE_NAME: ${{ github.repository_owner }}/telegram-chat-to-webhook
 
 jobs:
   build-and-push:

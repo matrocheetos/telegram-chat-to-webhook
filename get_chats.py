@@ -17,7 +17,7 @@ TEMP_COPY = f'{TEMP_PREFIX}.session'
 if not os.path.exists(SESSION_FILE):
     print("ERRO: O arquivo de sessão 'session/userbot.session' não foi encontrado.")
     print("Por favor, execute o script de autenticação primeiro:")
-    print("docker exec -it telegram-monitor python auth.py")
+    print("docker exec -it telegram-chat-to-webhook python auth.py")
     exit(1)
 
 shutil.copyfile(SESSION_FILE, TEMP_COPY)

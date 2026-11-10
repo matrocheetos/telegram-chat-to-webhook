@@ -28,7 +28,7 @@ if not os.path.exists(SESSION_FILE):
     print("=========================================================")
     print("⚠️ AVISO: Nenhuma sessão do Telegram encontrada!")
     print("Para gerar a sessão, acesse o terminal do container e execute:")
-    print("docker exec -it telegram-monitor python auth.py")
+    print("docker exec -it telegram-chat-to-webhook python auth.py")
     print("Após gerar a sessão, este container iniciará o monitoramento automaticamente.")
     print("=========================================================")
     # Loop aguardando a criação do arquivo de sessão
